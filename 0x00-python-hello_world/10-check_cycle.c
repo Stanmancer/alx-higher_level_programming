@@ -16,9 +16,10 @@ int check_cycle(listint_t *list)
 	{
 		node = node->next;
 		i++;
-		if (node == list)
+		if (node->next < node)
 			return (1);
 	}
-
+	if (node != NULL)
+		return (1);
 	return (0);
 }
