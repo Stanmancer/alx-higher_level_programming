@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 
-print("{}".format("abcdefghijklmnopqrstuvwxyz"), end="")
+for i in range(26):
+    print("{:s}".format(chr(i + 97)), end="")
