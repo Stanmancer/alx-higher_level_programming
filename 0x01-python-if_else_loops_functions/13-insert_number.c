@@ -11,6 +11,7 @@
 listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *node = *head;
+	listint_t *temp = *head;
 	listint_t *new = NULL;
 
 	/* memory alloc */
@@ -20,20 +21,33 @@ listint_t *insert_node(listint_t **head, int number)
 
 	new->n = number;
 
-	/* sorting */
-	while (node != NULL)
-	{
-		if ((node->next)->n > number)
-		{
-			new->next = node->next;
-			node->next = new;
-			break;
-		}
-		node = node->next;
-	}
-
+	/* empty list */
 	if (node == NULL)
-		return (NULL);
-
-	return (new);
+	{
+		(*head) = new;
+		new->next = NULL;
+		return (new);
+	}
+	else
+	{
+		/* insert at beginning */
+		if ((*head)->n > number)
+		{
+			new->next = (*head);
+			(*head) = new;
+			return (new);
+		}
+		while (node != NULL)
+		{
+			node = node->next;
+			if ((node == NULL) || (node->n > number))
+			{
+				new->next = node;
+				temp->next = new;
+				break;
+			}
+			temp = node;
+		}
+		return (new);
+	}
 }
