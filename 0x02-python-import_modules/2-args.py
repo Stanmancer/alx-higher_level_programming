@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     print(len - 1, end='')
 
-    if len == 1:
+    if len == 2:
         print(" argument:")
     else:
         print(" arguments:")
